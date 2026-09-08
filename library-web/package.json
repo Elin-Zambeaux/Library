@@ -1,0 +1,26 @@
+{
+  "name": "library-web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "cross-env NODE_EXTRA_CA_CERTS=./certs/aspnetcore-dev.pem next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "certs": "node -e \"require('fs').mkdirSync('./certs',{recursive:true})\" && dotnet dev-certs https --export-path ./certs/aspnetcore-dev.pem --format PEM --no-password && node -e \"require('fs').rmSync('./certs/aspnetcore-dev.key',{force:true})\""
+  },
+  "dependencies": {
+    "next": "16.3.4",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "cross-env": "^10.1.0",
+    "eslint": "^9",
+    "eslint-config-next": "16.3.4",
+    "typescript": "^5"
+  }
+}

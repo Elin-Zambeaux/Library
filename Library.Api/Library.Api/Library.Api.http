@@ -1,0 +1,29 @@
+@Library.Api_HostAddress = http://localhost:5009
+
+# List every book. Run this first to see the current IDs,
+# then edit the ID in the borrow/return requests below.
+GET {{Library.Api_HostAddress}}/Books
+Accept: application/json
+
+###
+
+# Add a book to the collection.
+POST {{Library.Api_HostAddress}}/Books
+Content-Type: application/json
+
+{ "title": "Dune", "author": "Frank Herbert" }
+
+###
+
+# Borrow a book. 409 if it is already on loan, 400 if the name is blank.
+POST {{Library.Api_HostAddress}}/Books/3/borrow
+Content-Type: application/json
+
+{ "borrower": "Elin" }
+
+###
+
+# Return a book. 409 if it was not on loan.
+POST {{Library.Api_HostAddress}}/Books/3/return
+
+###
